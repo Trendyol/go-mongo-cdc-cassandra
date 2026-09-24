@@ -1,0 +1,32 @@
+cassandra:
+  hosts:
+    - "localhost:9042"
+  keyspace: "mykeyspace"
+  consistency: "QUORUM"
+  batchSizeLimit: 1000
+  batchTickerDuration: 10s
+  numConns: 2
+
+mongodb:
+  connection:
+    uri: "localhost:27017"
+    database: "exampleDB"
+    collection: "exampleCollection"
+
+metric:
+  port: 8080
+
+checkpoint:
+  tokenSaveInterval: 10s
+  changeStreamSaveCount: 500
+  bootstrapQueryBatchSize: 5000
+  bootstrapSaveInterval: 10s
+
+partition:
+  totalPartition: 1
+  consumerGroup: "cassandra"
+
+logger:
+  logLevel: "info"
+
+gracefulShutdownTimeout: 5s
