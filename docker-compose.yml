@@ -1,10 +1,19 @@
 services:
   mongodb:
+<<<<<<< HEAD
+    # mongo:8.x fails on GHA ubuntu-latest (kernel >= 6.19); see SERVER-121912
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: dcp-test
+=======
     image: mongo:8.0
     ports:
       - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: exampleDB
+>>>>>>> master
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 2s
@@ -16,6 +25,16 @@ services:
     ports:
       - "9042:9042"
     environment:
+<<<<<<< HEAD
+      MAX_HEAP_SIZE: 1024M
+      HEAP_NEWSIZE: 256M
+    healthcheck:
+      test: ["CMD-SHELL", "nodetool status | grep -E '^UN'"]
+      interval: 15s
+      timeout: 15s
+      retries: 40
+      start_period: 180s
+=======
       MAX_HEAP_SIZE: 512M
       HEAP_NEWSIZE: 128M
     healthcheck:
@@ -24,3 +43,4 @@ services:
       timeout: 10s
       retries: 60
       start_period: 120s
+>>>>>>> master
