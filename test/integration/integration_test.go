@@ -8,8 +8,13 @@ import (
 )
 
 func TestServicesReachable(t *testing.T) {
+<<<<<<< HEAD
+	waitForTCP(t, "mongodb", "localhost:27017", 30*time.Second)
+	waitForTCP(t, "cassandra", "localhost:9042", 30*time.Second)
+=======
 	waitForTCP(t, "mongodb", "localhost:27017", 2*time.Minute)
 	waitForTCP(t, "cassandra", "localhost:9042", 3*time.Minute)
+>>>>>>> master
 }
 
 func waitForTCP(t *testing.T, name, address string, timeout time.Duration) {
